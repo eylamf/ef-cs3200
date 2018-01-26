@@ -1,0 +1,42 @@
+-- CREATE TABLE COMMANDS
+
+-- ACTOR
+CREATE TABLE ACTOR (
+    id INTEGER PRIMARY KEY,
+    fname VARCHAR(50),
+    lname VARCHAR(50),
+    gender CHAR(1)
+);
+
+-- MOVIE
+CREATE TABLE MOVIE (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(200),
+    year INTEGER
+);
+
+-- DIRECTORS
+CREATE TABLE DIRECTORS (
+    id INTEGER PRIMARY KEY,
+    fname VARCHAR(50),
+    lname VARCHAR(50)
+);
+
+-- CASTS
+CREATE TABLE CASTS (
+    pid INTEGER references ACTOR(id),
+    mid INTEGER references MOVIE(id),
+    role VARCHAR(100)
+);
+
+-- MOVIE_DIRECTORS
+CREATE TABLE MOVIE_DIRECTORS (
+    did INTEGER references DIRECTORS(id),
+    mid INTEGER references MOVIE(id)
+);
+
+-- GENRE
+CREATE TABLE GENRE (
+    mid INTEGER,
+    genre VARCHAR(50)
+);
